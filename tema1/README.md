@@ -15,4 +15,7 @@
 ![Poza 2](poze/poza2.jpg)
 ![Poza 3](poze/poza3.jpg)
 
-[![Video cu funcționalitatea montajului](https://img.youtube.com/vi/3ECKKEyxzsw/0.jpg)](https://youtu.be/3ECKKEyxzsw)
+## Schema electrică
+![Schema electrică](poze/schema_electrica.png)
+
+Video cu funcționalitatea montajului https://youtu.be/3ECKKEyxzsw
