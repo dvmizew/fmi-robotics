@@ -11,6 +11,7 @@
 - Breadboard
 - Linii de legătură
 
+## Montaj fizic
 ![Poza 1](poze/poza1.jpg)
 ![Poza 2](poze/poza2.jpg)
 ![Poza 3](poze/poza3.jpg)
