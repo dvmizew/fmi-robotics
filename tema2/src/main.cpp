@@ -210,7 +210,12 @@ void handleRunningPhase() {
         if (inputChar == '\b' && playerInput.length() > 0) {
             // when backspace is pressed, remove the last character from the player input string and light up the LEDs based on the input correctness
             playerInput.remove(playerInput.length() - 1);
-            (activeWord.startsWith(playerInput)) ? lightGreenLED() : lightRedLED();
+            if (activeWord.startsWith(playerInput)) {
+                lightGreenLED();
+            }
+            else if (playerInput.length() >= activeWord.length() || !activeWord.startsWith(playerInput)) { // if the input is longer than the active word or incorrect
+                lightRedLED();
+            }
         } else if (isAlpha(inputChar) || inputChar == ' ') {
             // only process alphabetic characters and spaces (for multi-word phrases)
             inputChar = tolower(inputChar);
@@ -223,7 +228,12 @@ void handleRunningPhase() {
                 requestNewWord = true;
             }
             // when a character is pressed, light up the LEDs based on the input correctness
-            (activeWord.startsWith(playerInput)) ? lightGreenLED() : lightRedLED();
+            if (activeWord.startsWith(playerInput)) {
+                lightGreenLED();
+            }
+            else if (playerInput.length() >= activeWord.length() || !activeWord.startsWith(playerInput)) { // if the input is longer than the active word or incorrect
+                lightRedLED();
+            }
         }
     }
 }
