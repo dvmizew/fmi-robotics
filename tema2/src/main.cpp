@@ -19,27 +19,25 @@
 #define MEDIUM_MODE_TIME 5
 #define HARD_MODE_TIME 2
 
-unsigned long lastStartStopTime = 0;
-unsigned long lastDifficultyChangeTime = 0;
-
 volatile int remainingWordTime = EASY_MODE_TIME;
 volatile unsigned int remainingGameTime = TOTAL_GAME_TIME;
 
+unsigned long lastStartStopTime = 0;
+unsigned long lastDifficultyChangeTime = 0;
+unsigned long blinkTimer = 0;
+unsigned long startTime = 0;
+
+unsigned int blinkCount = 0;
+unsigned int correctGuesses = 0;
+
 bool startStopPressed = false;
 bool difficultyPressed = false;
-
 bool requestNewWord = false;
 bool gameFinished = false;
 
 String activeWord;
 String playerInput = "";
 String serialBuffer = "";
-
-unsigned long blinkTimer = 0;
-unsigned long startTime = 0;
-
-unsigned int blinkCount = 0;
-unsigned int correctGuesses = 0;
 
 enum GamePhase {
     PHASE_IDLE,
@@ -82,7 +80,7 @@ ISR(TIMER1_COMPA_vect) {
     if (remainingWordTime <= 0)
         requestNewWord = true;
 
-    if (remainingGameTime <= 0)
+    if (remainingGameTime == 0)
         gameFinished = true;
 }
 
@@ -106,16 +104,22 @@ void setup() {
 
     randomSeed(millis());
 
-    noInterrupts();
+    noInterrupts(); // Disable interrupts while setting up the timer
 
     TCCR1A = 0;
     TCCR1B = 0;
 
-    TCNT1 = TIMER_BASE_COUNT; // Set the initial value for the timer
-    TCCR1B |= (1 << CS12); // Set the prescaler to divide the frequency
+    TCNT1 = TIMER_BASE_COUNT; // Set the initial value for the timer (1Hz)
+    TCCR1B |= (1 << CS12); // Set the prescaler to divide the frequency by 256
     TIMSK1 |= (1 << OCIE1A); // Enable interrupt on compare match
 
     interrupts();
+}
+
+// specific Arduino function to handle serial events
+void serialEvent() {
+    while (Serial.available())
+        serialBuffer += (char)Serial.read();
 }
 
 void loop() {
@@ -136,12 +140,12 @@ void handleIdlePhase() {
     if (startStopPressed) {
         switchToStart();
         Serial.println("\nStarting!");
-        startStopPressed = false;
+        startStopPressed = false; // reset the flag
     }
 
     if (difficultyPressed) {
         changeDifficulty();
-        difficultyPressed = false;
+        difficultyPressed = false; // reset the flag
     }
 }
 
@@ -153,6 +157,7 @@ void handleStartingPhase() {
             lightWhiteLED();
         } else {
             resetLEDs();
+            // Display the countdown on the serial monitor
             int countdown = 3 - blinkCount / 2;
             if (countdown > 0) {
                 Serial.println(countdown);
@@ -189,7 +194,7 @@ void handleRunningPhase() {
             Serial.print(correctGuesses);
             Serial.println(" cuvinte!");
         }
-        else if (correctGuesses >= 20) {
+        else if (correctGuesses) {
             Serial.print(correctGuesses);
             Serial.println(" de cuvinte!");
         }
@@ -211,6 +216,7 @@ void handleRunningPhase() {
             inputChar = tolower(inputChar);
             playerInput += inputChar;
 
+            // check if the player input matches the active word
             if (playerInput == activeWord) {
                 correctGuesses++;
                 Serial.println("\nCorect!");
@@ -220,11 +226,6 @@ void handleRunningPhase() {
             (activeWord.startsWith(playerInput)) ? lightGreenLED() : lightRedLED();
         }
     }
-}
-
-void serialEvent() {
-    while (Serial.available())
-        serialBuffer += (char)Serial.read();
 }
 
 void processStartButton() {
