@@ -2,7 +2,7 @@
 
 // furat de la regele https://github.com/oreoezi si adaugat cateva replici
 const char* dictionary[] = {
-    "copilu cine esti ma", 
+    "piticule cine esti ma", 
     "zero munca", 
     "alta gasca in alta traista", 
     "switch switch router",  
@@ -44,7 +44,12 @@ const char* dictionary[] = {
     "va pierdeti atentia foarte usor",
     "cum spune rusu",
     "time is money",
-    "ce inseamna RSA?"
+    "ce inseamna RSA?",
+    "restanta puisor",
+    "astazi facem un pas mai departe",
+    "un pas mare pentru voi",
+    "un pas mic pentru omenire",
+    "am un default gateway pentru tine"
 };
 
 const uint8_t dictionaryLen = sizeof(dictionary) / sizeof(dictionary[0]);
