@@ -10,6 +10,7 @@ const char* dictionary[] = {
     "ai lacune mari",
     "sterge tot",
     "pasul doi incomplet",
+    "nu treci mai departe",
     "pentru ca da",
     "colegul meu",
     "nu ai fost la curs",
@@ -33,13 +34,17 @@ const char* dictionary[] = {
     "lucruri marunte",
     "inchideti echipamentele",
     "nu salvati nimic",
+    "resetati aplicatia",
     "echipament inseamna unitate + monitor",
     "ne vedem data viitoare la laborator",
     "ma suna managerul",
     "eu nu sunt aici",
     "nu exista help",
     "help-ul dauneaza grav notei finale",
-    "va pierdeti atentia foarte usor"
+    "va pierdeti atentia foarte usor",
+    "cum spune rusu",
+    "time is money",
+    "ce inseamna RSA?"
 };
 
 const uint8_t dictionaryLen = sizeof(dictionary) / sizeof(dictionary[0]);
