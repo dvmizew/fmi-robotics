@@ -35,4 +35,4 @@ Jocul se poate opri oricând cu butonul de start/stop.
 ## Schema electrică
 ![Schema electrică](poze/schema_electrica.png)
 
-Video cu funcționalitatea montajului: TBD
+[Video cu funcționalitatea montajului](https://youtu.be/es2CrdoGcQ0)
