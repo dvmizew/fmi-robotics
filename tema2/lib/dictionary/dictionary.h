@@ -49,7 +49,21 @@ const char* dictionary[] = {
     "astazi facem un pas mai departe",
     "un pas mare pentru voi",
     "un pas mic pentru omenire",
-    "am un default gateway pentru tine"
+    "am un default gateway pentru tine",
+    "defolt ghetoi",
+    "nu sariti peste fire",
+    "toate cele bune copii",
+    "si voua copii",
+    "ati folosit gipitiul?",
+    "tu stii ce inseamna USO?",
+    "ce o fi ala folder?",
+    "ce o fi aia partitie?",
+    "ti-am zis eu sa intri acolo?",
+    "te joci acasa",
+    "am zis castraveti",
+    "rong copilu",
+    "ce cablu foloseste conexiunea wireless"
+    // nu mai pun ca raman fara RAM
 };
 
 const uint8_t dictionaryLen = sizeof(dictionary) / sizeof(dictionary[0]);
