@@ -19,7 +19,7 @@
 #define MEDIUM_MODE_TIME 5
 #define HARD_MODE_TIME 3
 
-volatile int remainingWordTime = EASY_MODE_TIME;
+volatile int remainingWordTime = EASY_MODE_TIME; // default word time
 volatile unsigned int remainingGameTime = TOTAL_GAME_TIME;
 
 unsigned long lastStartStopTime = 0;
@@ -100,20 +100,20 @@ void setup() {
 
     // Initialize serial communication
     Serial.begin(SERIAL_BAUD);
-    switchToIdle();
+    switchToIdle(); // Start the game in the idle phase
 
-    randomSeed(millis());
+    randomSeed(analogRead(0));
 
     noInterrupts(); // Disable interrupts while setting up the timer
 
-    TCCR1A = 0;
-    TCCR1B = 0;
+    TCCR1A = 0; // normal mode
+    TCCR1B = 0; // stop the timer while setting it up
 
     TCNT1 = TIMER_BASE_COUNT; // Set the initial value for the timer (1Hz)
     TCCR1B |= (1 << CS12); // Set the prescaler to divide the frequency by 256
     TIMSK1 |= (1 << OCIE1A); // Enable interrupt on compare match
 
-    interrupts();
+    interrupts(); // Enable interrupts after setting up the timer
 }
 
 // specific Arduino function to handle serial events
@@ -200,7 +200,7 @@ void handleRunningPhase() {
         }
 
         switchToIdle();
-        gameFinished = false;
+        gameFinished = false; // because the game is over
     }
 
     if (serialBuffer.length() > 0) {
