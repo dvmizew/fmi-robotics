@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <ctype.h>
 #include <dictionary.h>
 
 #define PIN_RED 10
@@ -216,7 +217,7 @@ void handleRunningPhase() {
             else if (playerInput.length() >= activeWord.length() || !activeWord.startsWith(playerInput)) { // if the input is longer than the active word or incorrect
                 lightRedLED();
             }
-        } else if (isAlpha(inputChar) || inputChar == ' ') {
+        } else if (isalpha(inputChar) || isdigit(inputChar) || ispunct(inputChar) || inputChar == ' ') {
             // only process alphabetic characters and spaces (for multi-word phrases)
             inputChar = tolower(inputChar);
             playerInput += inputChar;
