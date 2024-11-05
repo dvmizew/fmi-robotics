@@ -103,6 +103,9 @@ const char str97[] PROGMEM = "axul drumului se mai numeste si refugiu";
 const char str98[] PROGMEM = "pauza noastra ca de obicei este la fara 20";
 const char str99[] PROGMEM = "nu iti depanez eu tie echipamentul";
 const char str100[] PROGMEM = "partea asta uit-o copilu";
+const char str101[] PROGMEM = "eu vorbesc cu frigiderul";
+const char str102[] PROGMEM = "nu exista zoom";
+const char str103[] PROGMEM = "ceea ce spune colegul vostru";
 
 const char *const dictionary[] PROGMEM = {
     str0, str1, str2, str3, str4, str5, str6, str7,
@@ -117,7 +120,7 @@ const char *const dictionary[] PROGMEM = {
     str72, str73, str74, str75, str76, str77, str78, str79,
     str80, str81, str82, str83, str84, str85, str86, str87,
     str88, str89, str90, str91, str92, str93, str94, str95,
-    str96, str97, str98, str99, str100
+    str96, str97, str98, str99, str100, str101, str102, str103
 };
 
 const uint8_t dictionaryLen = sizeof(dictionary) / sizeof(dictionary[0]);
