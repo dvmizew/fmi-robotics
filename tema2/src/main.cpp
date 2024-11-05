@@ -17,7 +17,7 @@
 #define TOTAL_GAME_TIME 30
 #define EASY_MODE_TIME 10
 #define MEDIUM_MODE_TIME 5
-#define HARD_MODE_TIME 2
+#define HARD_MODE_TIME 3
 
 volatile int remainingWordTime = EASY_MODE_TIME;
 volatile unsigned int remainingGameTime = TOTAL_GAME_TIME;
@@ -139,7 +139,7 @@ void loop() {
 void handleIdlePhase() {
     if (startStopPressed) {
         switchToStart();
-        Serial.println("\nStarting!");
+        Serial.println(F("\nStarting!"));
         startStopPressed = false; // reset the flag
     }
 
@@ -153,6 +153,7 @@ void handleStartingPhase() {
     blinkTimer = millis() - startTime; // calculate the time elapsed since the start of the phase
 
     if (blinkTimer > INITIAL_BLINK_DURATION * blinkCount) {
+        // alternate between lighting up the white LEDs and displaying the countdown
         if (blinkCount % 2 == 0) {
             lightWhiteLED();
         } else {
@@ -167,14 +168,14 @@ void handleStartingPhase() {
     }
 
     if (blinkTimer > INITIAL_DURATION) { // after the initial duration, switch to the running phase
-        Serial.println("\nGo!");
+        Serial.println(F("\nGo!"));
         switchToRunning();
     }
 }
 
 void handleRunningPhase() {
     if (startStopPressed) {
-        Serial.println("\nGame stopped!");
+        Serial.println(F("\nGame stopped!"));
         switchToIdle();
         startStopPressed = false;
     }
@@ -185,18 +186,17 @@ void handleRunningPhase() {
     }
 
     if (gameFinished) {
-        Serial.println("\nGame over!");
-        Serial.print("Ai ghicit ");
+        Serial.println(F("\nGame over!"));
+        Serial.print(F("Ai ghicit "));
 
         if (correctGuesses == 1)
-            Serial.println("un singur cuvant!");
+            Serial.println(F("un singur cuvant!"));
         else if (correctGuesses < 20) {
             Serial.print(correctGuesses);
-            Serial.println(" cuvinte!");
-        }
-        else if (correctGuesses) {
+            Serial.println(F(" cuvinte!"));
+        } else {
             Serial.print(correctGuesses);
-            Serial.println(" de cuvinte!");
+            Serial.println(F(" de cuvinte!"));
         }
 
         switchToIdle();
@@ -222,18 +222,22 @@ void handleRunningPhase() {
             playerInput += inputChar;
 
             // check if the player input matches the active word
-            if (playerInput == activeWord) {
+            if (playerInput.equals(activeWord)) {
                 correctGuesses++;
-                Serial.println("\nCorect!");
+                Serial.println(F("\nCorect!"));
                 requestNewWord = true;
+                serialBuffer = ""; // reset the serial buffer for the next word
+                playerInput = ""; // reset the player input for the next word
             }
-            // when a character is pressed, light up the LEDs based on the input correctness
+
             if (activeWord.startsWith(playerInput)) {
                 lightGreenLED();
-            }
-            else if (playerInput.length() >= activeWord.length() || !activeWord.startsWith(playerInput)) { // if the input is longer than the active word or incorrect
+            } else {
                 lightRedLED();
             }
+        } else {
+            // reset the player input if the character is not alphabetic
+            serialBuffer = "";
         }
     }
 }
@@ -250,6 +254,7 @@ void processDifficultyButton() {
     if (currentPhase != PHASE_IDLE)
         return;
 
+    // debounce the button press
     unsigned long currentTime = millis();
     if (currentTime - lastDifficultyChangeTime > BUTTON_DEBOUNCE_DELAY) {
         difficultyPressed = true;
@@ -264,16 +269,16 @@ void changeDifficulty() {
     switch (currentDifficulty) {
         case DIFFICULTY_EASY:
             currentDifficulty = DIFFICULTY_MEDIUM;
-            Serial.println(difficultyMessages[1]);  // Medium
+            Serial.println((const __FlashStringHelper*)pgm_read_word(&(difficultyMessages[1])));  // Medium
             break;
         case DIFFICULTY_MEDIUM:
             currentDifficulty = DIFFICULTY_HARD;
-            Serial.println(difficultyMessages[2]);  // Hard mode on!
+            Serial.println((const __FlashStringHelper*)pgm_read_word(&(difficultyMessages[2])));  // Hard mode on!
             break;
         case DIFFICULTY_HARD:
         default:
             currentDifficulty = DIFFICULTY_EASY;
-            Serial.println(difficultyMessages[0]);  // Easy
+            Serial.println((const __FlashStringHelper*)pgm_read_word(&(difficultyMessages[0])));  // Easy
             break;
     }
 }
@@ -292,12 +297,16 @@ void generateNewWord() {
     }
 
     int index = random(dictionaryLen);
-    activeWord = String(dictionary[index]);
+    char buffer[50];
+
+    strcpy_P(buffer, (char*)pgm_read_word(&(dictionary[index]))); 
+    activeWord = String(buffer);
+
     playerInput = ""; // reset the player input
     serialBuffer = ""; // reset the serial buffer
     lightGreenLED();
 
-    Serial.println("\nCuvant:");
+    Serial.println(F("\nCuvant:"));
     Serial.println(activeWord);
 }
 
