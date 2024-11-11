@@ -106,6 +106,40 @@ const char str100[] PROGMEM = "partea asta uit-o copilu";
 const char str101[] PROGMEM = "eu vorbesc cu frigiderul";
 const char str102[] PROGMEM = "nu exista zoom";
 const char str103[] PROGMEM = "ceea ce spune colegul vostru";
+const char str104[] PROGMEM = "tot ce faci lasa urme";
+const char str105[] PROGMEM = "securizat nu inseamna criptat";
+const char str106[] PROGMEM = "bresa de securitate";
+const char str107[] PROGMEM = "dezastru ecologic";
+const char str108[] PROGMEM = "asa se pierde un examen";
+const char str109[] PROGMEM = "ghinion";
+const char str110[] PROGMEM = "unde e colegu tau?";
+const char str111[] PROGMEM = "nu lasati echipamentul sa ia decizii pentru voi";
+const char str112[] PROGMEM = "claritate in vorbire";
+const char str113[] PROGMEM = "ciscosecpa55";
+const char str114[] PROGMEM = "asa cum am convenit la primul laborator";
+const char str115[] PROGMEM = "avem o agregare de legaturi";
+const char str116[] PROGMEM = "fat frumos";
+const char str117[] PROGMEM = "IEEE";
+const char str118[] PROGMEM = "internet of sings";
+const char str119[] PROGMEM = "eu vorbesc si chineza";
+const char str120[] PROGMEM = "nu ai indeplinit criteriul de prezente";
+const char str121[] PROGMEM = "nu dati submit";
+const char str122[] PROGMEM = "un minim de securitate";
+const char str123[] PROGMEM = "am doi ursuleti in spate";
+const char str124[] PROGMEM = "eu inca am laptop din 98";
+const char str125[] PROGMEM = "tu ai potential dar degeaba";
+const char str126[] PROGMEM = "va pistonam din spate"; // asta e mai nisata, one time saying
+const char str127[] PROGMEM = "la nivelul vostru de cunostinte";
+const char str128[] PROGMEM = "va spun doamnei de poo";
+const char str129[] PROGMEM = "modelul asta trebuie sa il implementam";
+const char str130[] PROGMEM = "de-aia vin pe jos";
+const char str131[] PROGMEM = "ai trimis tu mail-uri?";
+const char str132[] PROGMEM = "eu am categoria D";
+const char str133[] PROGMEM = "ai schimbat axele";
+const char str134[] PROGMEM = "nu lucrati in izometric";
+const char str135[] PROGMEM = "echipamentul specialistului denumit pompos SERVICE";
+const char str136[] PROGMEM = "aplicatia vorbeste cu tine";
+const char str137[] PROGMEM = "din saptamana 7, materialele vor disparea";
 
 const char *const dictionary[] PROGMEM = {
     str0, str1, str2, str3, str4, str5, str6, str7,
@@ -120,7 +154,12 @@ const char *const dictionary[] PROGMEM = {
     str72, str73, str74, str75, str76, str77, str78, str79,
     str80, str81, str82, str83, str84, str85, str86, str87,
     str88, str89, str90, str91, str92, str93, str94, str95,
-    str96, str97, str98, str99, str100, str101, str102, str103
+    str96, str97, str98, str99, str100, str101, str102, str103,
+    str104, str105, str106, str107, str108, str109, str110,
+    str111, str112, str113, str114, str115, str116, str117,
+    str118, str119, str120, str121, str122, str123, str124,
+    str125, str126, str127, str128, str129, str130, str131,
+    str132, str133, str134, str135, str136, str137
 };
 
 const uint8_t dictionaryLen = sizeof(dictionary) / sizeof(dictionary[0]);
