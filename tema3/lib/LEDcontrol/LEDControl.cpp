@@ -23,19 +23,15 @@ void initializeLEDs() {
 }
 
 void setRGBColor(int player, int color) {
-    if (player == 1) {
+    if (player == 1)
         setRGBColor(RGB_LED_PLAYER1_RED, RGB_LED_PLAYER1_GREEN, RGB_LED_PLAYER1_BLUE, color);
-    }
-    else if (player == 2) {
+    else if (player == 2)
         setRGBColor(RGB_LED_PLAYER2_RED, RGB_LED_PLAYER2_GREEN, RGB_LED_PLAYER2_BLUE, color);
-    }
 }
 
 void turnOffRGB(int player) {
-    if (player == 1) {
+    if (player == 1)
         turnOffRGB(RGB_LED_PLAYER1_RED, RGB_LED_PLAYER1_GREEN, RGB_LED_PLAYER1_BLUE);
-    } 
-    else {
+    else if (player == 2)
         turnOffRGB(RGB_LED_PLAYER2_RED, RGB_LED_PLAYER2_GREEN, RGB_LED_PLAYER2_BLUE);
-    }
 }

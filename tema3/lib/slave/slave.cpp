@@ -1,4 +1,4 @@
-#include <slave.h>
+#include "slave.h"
 
 // SLAVE GAME CODE
 void setup() {

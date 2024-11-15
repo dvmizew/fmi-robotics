@@ -2,17 +2,13 @@
 #include "Buttons.h"
 #include "LEDControl.h"
 #include "Display.h"
-#include <Servo.h>
-#include <SPI.h>
-
-#define SS_PIN 10 // slave select pin for SPI communication
 
 Servo gameServo;
 int player1Score = 0;
 int player2Score = 0;
 int currentPlayer = 1;
 unsigned long lastUpdateTime = 0;
-const int roundDuration = 3000;  // round duration in milliseconds
+const int roundDuration = 3000;  // round duration in milliseconds (3 seconds)
 
 void initializeSPI() {
     SPI.begin();
@@ -40,7 +36,7 @@ void startGame() {
 }
 
 void updateGame() {
-    if (millis() - lastUpdateTime > roundDuration) {
+    if (millis() - lastUpdateTime > roundDuration) { // check if the round duration has passed
         displayPauseMessage();
         lastUpdateTime = millis(); // reset the timer
         int correctButton = random(1, 4);
@@ -69,9 +65,4 @@ void updateGame() {
 void playCorrectSound() {
     // play a sound to indicate a correct button press
     tone(BUZZER_PIN, 1000, 200);  // at 1khz for 200ms
-}
-
-void playGameOverSound() {
-    // play a sound to indicate the end of the game
-    tone(BUZZER_PIN, 500, 500);   // at 0.5khz for 500ms
 }

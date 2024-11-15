@@ -1,10 +1,9 @@
 #include "Display.h"
-#include <LiquidCrystal.h>
 
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // (RS, E, D4, D5, D6, D7)
 
 void initializeLCD() {
-    lcd.begin(16, 2);
+    lcd.begin(16, 2); // 16x2 LCD display
 }
 
 void displayWelcomeMessage() {
@@ -13,17 +12,20 @@ void displayWelcomeMessage() {
 }
 
 void updateScore(int player1Score, int player2Score) {
-    lcd.setCursor(0, 0);
+    lcd.setCursor(0, 0); // write the score of the first player on the first row
     lcd.print("P1: ");
     lcd.print(player1Score);
-    lcd.setCursor(0, 1);
+    lcd.setCursor(0, 1); // write the score of the second player on the second row
     lcd.print("P2: ");
     lcd.print(player2Score);
 }
 
 void displayWinner(int player) {
     lcd.clear();
-    lcd.print("Winner: P");
+    if (player == 1)
+        lcd.print("Player 1 wins!");
+    else if (player == 2)
+        lcd.print("Player 2 wins!");
     lcd.print(player);
 }
 
