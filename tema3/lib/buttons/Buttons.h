@@ -3,8 +3,7 @@
 
 #include <Arduino.h>
 
-void initializeButtons();
-bool isStartButtonPressed();
-int getPlayerButtonPress(int player);
+void initializeButtons(); // uses the A0 pin to read the buttons
+int readMultiplexedButton();
 
 #endif

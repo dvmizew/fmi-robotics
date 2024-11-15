@@ -1,7 +1,7 @@
 #include "Display.h"
 #include <LiquidCrystal.h>
 
-LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 void initializeLCD() {
     lcd.begin(16, 2);
@@ -25,4 +25,10 @@ void displayWinner(int player) {
     lcd.clear();
     lcd.print("Winner: P");
     lcd.print(player);
+}
+
+void displayPauseMessage() {
+    lcd.clear();
+    lcd.print("Next Round...");
+    delay(2000); // pause of 2 seconds
 }

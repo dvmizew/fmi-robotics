@@ -1,12 +1,14 @@
 #ifndef GAMECONTROL_H
 #define GAMECONTROL_H
+#define BUZZER_PIN 4
 
 #include <Arduino.h>
 
-void initializeSPI();
 void initializeServo();
 void startGame();
 void updateGame();
-void endGame();
+void playCorrectSound();
+void initializeSPI();
+void sendCommandToSlave(int command);
 
 #endif

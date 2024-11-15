@@ -1,24 +1,26 @@
 #include "Buttons.h"
 
-#define BUTTON1_PIN 2
-#define BUTTON2_PIN 3
-#define BUTTON3_PIN 4
-#define START_BUTTON_PIN 5
+#define BUTTON_PIN A0 // analog pin for reading the buttons
+
+// because the buttons are multiplexed, we define thresholds for each button
+#define BUTTON1_THRESHOLD 200
+#define BUTTON2_THRESHOLD 400
+#define BUTTON3_THRESHOLD 600
 
 void initializeButtons() {
-    pinMode(BUTTON1_PIN, INPUT);
-    pinMode(BUTTON2_PIN, INPUT);
-    pinMode(BUTTON3_PIN, INPUT);
-    pinMode(START_BUTTON_PIN, INPUT);
+    pinMode(BUTTON_PIN, INPUT);
 }
 
-bool isStartButtonPressed() {
-    return digitalRead(START_BUTTON_PIN) == HIGH;
-}
+int readMultiplexedButton() {
+    int analogValue = analogRead(BUTTON_PIN);
 
-int getPlayerButtonPress(int player) {
-    if (digitalRead(BUTTON1_PIN) == HIGH) return 1;
-    if (digitalRead(BUTTON2_PIN) == HIGH) return 2;
-    if (digitalRead(BUTTON3_PIN) == HIGH) return 3;
-    return -1;
+    if (analogValue < BUTTON1_THRESHOLD) {
+        return 1; // first button
+    } else if (analogValue < BUTTON2_THRESHOLD) {
+        return 2; // second button
+    } else if (analogValue < BUTTON3_THRESHOLD) {
+        return 3; // third button
+    }
+
+    return -1; // no button was pressed
 }

@@ -2,6 +2,7 @@
 #define LEDCONTROL_H
 
 #include <Arduino.h>
+#include <RGBUtils.h>
 
 void initializeLEDs();
 void setRGBColor(int player, int color);

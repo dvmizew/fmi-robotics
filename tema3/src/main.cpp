@@ -3,17 +3,15 @@
 #include "Display.h"
 #include "GameControl.h"
 
+// MASTER GAME CODE
 void setup() {
-    initializeSPI();
+    initializeButtons();
+    initializeLEDs();
     initializeLCD();
     initializeServo();
-    initializeButtons();
-    displayWelcomeMessage();
+    startGame();
 }
 
 void loop() {
-    if (isStartButtonPressed()) {
-        startGame();
-    }
     updateGame();
 }
