@@ -1,7 +1,5 @@
 #include "Buttons.h"
 
-#define BUTTON_PIN A0 // analog pin for reading the buttons
-
 // because the buttons are multiplexed, we define thresholds for each button
 #define BUTTON1_THRESHOLD 200
 #define BUTTON2_THRESHOLD 400
