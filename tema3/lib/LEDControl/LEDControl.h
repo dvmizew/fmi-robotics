@@ -5,7 +5,8 @@
 #include "RGBUtils.h"
 
 void initializeLEDs();
-void setRGBColor(int player, int color);
+void setPlayerRGBColor(int player, int color);
 void turnOffRGB(int player);
+void blinkLED(int pin);
 
 #endif

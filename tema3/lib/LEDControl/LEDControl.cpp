@@ -22,7 +22,16 @@ void initializeLEDs() {
     pinMode(RGB_LED_PLAYER2_BLUE, OUTPUT);
 }
 
-void setRGBColor(int player, int color) {
+void blinkLED(int pin) {
+    for (int i = 0; i < 3; i++) {
+        digitalWrite(pin, HIGH);
+        delay(200);
+        digitalWrite(pin, LOW);
+        delay(200);
+    }
+}
+
+void setPlayerRGBColor(int player, int color) {
     if (player == 1)
         setRGBColor(RGB_LED_PLAYER1_RED, RGB_LED_PLAYER1_GREEN, RGB_LED_PLAYER1_BLUE, color);
     else if (player == 2)
