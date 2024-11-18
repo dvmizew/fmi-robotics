@@ -8,17 +8,17 @@
 #define BUTTON3_THRESHOLD 600
 
 void initializeButtons() {
-    pinMode(BUTTON_PIN, INPUT);
+    pinMode(BUTTON_PIN, INPUT_PULLUP);
 }
 
 int readMultiplexedButton() {
-    int analogValue = analogRead(BUTTON_PIN);
+    int buttonValue = analogRead(BUTTON_PIN);
 
-    if (analogValue < BUTTON1_THRESHOLD) {
+    if (buttonValue < BUTTON1_THRESHOLD) {
         return 1; // first button
-    } else if (analogValue < BUTTON2_THRESHOLD) {
+    } else if (buttonValue < BUTTON2_THRESHOLD) {
         return 2; // second button
-    } else if (analogValue < BUTTON3_THRESHOLD) {
+    } else if (buttonValue < BUTTON3_THRESHOLD) {
         return 3; // third button
     }
 
