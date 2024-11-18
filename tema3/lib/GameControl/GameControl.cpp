@@ -10,6 +10,10 @@ int currentPlayer = 1;
 unsigned long lastUpdateTime = 0;
 const int roundDuration = 3000;  // round duration in milliseconds (3 seconds)
 
+void initializeSerial() {
+    Serial.begin(9600);
+}
+
 void initializeSPI() {
     SPI.begin();
     pinMode(SS_PIN, OUTPUT);
@@ -17,7 +21,7 @@ void initializeSPI() {
 }
 
 void initializeServo() {
-    gameServo.attach(6); // attach the servo to pin 6
+    gameServo.attach(SERVO_PIN); // attach the servo to pin 6
     gameServo.write(0); // set the initial position of the servo
 }
 
@@ -60,6 +64,10 @@ void updateGame() {
 
         currentPlayer = (currentPlayer == 1) ? 2 : 1; // change the player
     }
+}
+
+void printDebug(String message) {
+    Serial.println(message);
 }
 
 void playCorrectSound() {
