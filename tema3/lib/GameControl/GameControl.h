@@ -1,8 +1,7 @@
 #ifndef GAMECONTROL_H
 #define GAMECONTROL_H
 
-#define BUZZER_PIN 4 // buzzer pin for playing sounds
-#define SS_PIN 10 // slave select pin for SPI communication
+#define BUZZER_PIN 9 // buzzer pin for playing sounds
 #define SERVO_PIN 6 // servo pin for moving the button
 
 #include <Arduino.h>

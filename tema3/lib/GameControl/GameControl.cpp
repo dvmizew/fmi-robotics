@@ -12,12 +12,13 @@ const int roundDuration = 3000;  // round duration in milliseconds (3 seconds)
 
 void initializeSerial() {
     Serial.begin(9600);
+    printDebug("merge minutele");
 }
 
 void initializeSPI() {
     SPI.begin();
-    pinMode(SS_PIN, OUTPUT);
-    digitalWrite(SS_PIN, HIGH); // disable initial slave device
+    pinMode(SS, OUTPUT);
+    digitalWrite(SS, HIGH); // disable initial slave device
 }
 
 void initializeServo() {
@@ -26,9 +27,9 @@ void initializeServo() {
 }
 
 void sendCommandToSlave(int command) {
-    digitalWrite(SS_PIN, LOW); // enable the slave device
+    digitalWrite(SS, LOW); // enable the slave device
     SPI.transfer(command); // send the command to the slave device
-    digitalWrite(SS_PIN, HIGH); // disable the slave device
+    digitalWrite(SS, HIGH); // disable the slave device
 }
 
 void startGame() {
