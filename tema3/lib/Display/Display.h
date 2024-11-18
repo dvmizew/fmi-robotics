@@ -4,12 +4,12 @@
 #include <LiquidCrystal.h>
 
 // LCD pins
-#define RS 12
-#define E 11
-#define D4 5
-#define D5 4
-#define D6 3
-#define D7 2
+#define RS 8
+#define E 7
+#define D4 6
+#define D5 5
+#define D6 4
+#define D7 3
 
 void initializeLCD();
 void displayWelcomeMessage();
