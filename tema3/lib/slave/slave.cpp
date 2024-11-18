@@ -1,13 +1,12 @@
-#include "slave.h"
+#include <SPI.h>
+#include "LEDControl.h"
 
 // SLAVE GAME CODE
 void setup() {
-    pinMode(RGB_LED_RED, OUTPUT);
-    pinMode(RGB_LED_GREEN, OUTPUT);
-    pinMode(RGB_LED_BLUE, OUTPUT);
-
-    pinMode(SS, INPUT);
     SPI.begin();
+    pinMode(SS, INPUT);
+    initializeButtonLEDs(); // initialize the button LEDs and turn them on
+    initializeRGBLEDs(); // initialize the RGB LEDs for both players
 }
 
 void loop() {
@@ -21,18 +20,26 @@ void handleMasterCommand(int command) {
     // handle the command received from the master
     switch (command) {
         case 1:
-            setRGBColor(RGB_LED_RED, RGB_LED_GREEN, RGB_LED_BLUE, 1); // set to RED
+            setPlayerRGBColor(1, 1); // set player 1 LED to RED
             break;
         case 2:
-            setRGBColor(RGB_LED_RED, RGB_LED_GREEN, RGB_LED_BLUE, 2); // set to GREEN
+            setPlayerRGBColor(1, 2); // set player 1 LED to GREEN
             break;
         case 3:
-            setRGBColor(RGB_LED_RED, RGB_LED_GREEN, RGB_LED_BLUE, 3); // set to BLUE
+            setPlayerRGBColor(1, 3); // set player 1 LED to BLUE
             break;
         case 4:
-            blinkLED(RGB_LED_RED); // blink the RED LED as an error signal
+            setPlayerRGBColor(2, 1); // set player 2 LED to RED
+            break;
+        case 5:
+            setPlayerRGBColor(2, 2); // set player 2 LED to GREEN
+            break;
+        case 6:
+            setPlayerRGBColor(2, 3); // set player 2 LED to BLUE
             break;
         default:
-            turnOffRGB(RGB_LED_RED, RGB_LED_GREEN, RGB_LED_BLUE);
+            turnOffPlayerRGB(1); // turn off player 1 LED
+            turnOffPlayerRGB(2); // turn off player 2 LED
+            break;
     }
 }
