@@ -9,6 +9,7 @@ void setup() {
     initializeLEDs();
     initializeLCD();
     initializeServo();
+    initializeSerial();
     startGame();
 }
 
