@@ -5,8 +5,6 @@
 
 // MASTER GAME CODE
 void setup() {
-    initializeButtons();
-    initializeLEDs();
     initializeLCD();
     initializeServo();
     initializeSerial();
