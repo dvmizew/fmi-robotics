@@ -1,6 +1,6 @@
 #include "Display.h"
 
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // (RS, E, D4, D5, D6, D7)
+LiquidCrystal lcd(RS, E, D4, D5, D6, D7);
 
 void initializeLCD() {
     lcd.begin(16, 2); // 16x2 LCD display
@@ -8,6 +8,14 @@ void initializeLCD() {
 
 void displayWelcomeMessage() {
     lcd.clear();
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Loading.");
+    delay(500);
+    lcd.print(".");
+    delay(500);
+    lcd.print(".");
+    delay(500);
     lcd.print("Welcome!");
 }
 
