@@ -30,15 +30,18 @@ void initializeServo() {
 void sendCommandToSlave(int command) {
     digitalWrite(SS, LOW); // enable the slave device
     SPI.transfer(command); // send the command to the slave device
+    printDebug("Sent command to slave: " + String(command));
     digitalWrite(SS, HIGH); // disable the slave device
 }
 
 void startGame() {
-    displayWelcomeMessage();
-    player1Score = 0;
-    player2Score = 0;
-    currentPlayer = 1;
-    lastUpdateTime = millis();
+    if (readMultiplexedButton() == START_BUTTON_PRESSED) {
+        displayWelcomeMessage();
+        player1Score = 0;
+        player2Score = 0;
+        currentPlayer = 1;
+        lastUpdateTime = millis();
+    }
 }
 
 void updateGame() {

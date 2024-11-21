@@ -2,7 +2,7 @@
 #define GAMECONTROL_H
 
 #define BUZZER_PIN 9 // buzzer pin for playing sounds
-#define SERVO_PIN 6 // servo pin for moving the button
+#define SERVO_PIN 1 // servo pin for moving the button
 
 #include <Arduino.h>
 #include <Servo.h>

@@ -1,8 +1,10 @@
 #include <SPI.h>
+#include "slave.h"
 #include "LEDControl.h"
 
 // SLAVE GAME CODE
 void setup() {
+    pinMode(MISO, OUTPUT);
     SPI.begin();
     pinMode(SS, INPUT);
     initializeButtonLEDs(); // initialize the button LEDs and turn them on
@@ -20,26 +22,26 @@ void handleMasterCommand(int command) {
     // handle the command received from the master
     switch (command) {
         case 1:
-            setPlayerRGBColor(1, 1); // set player 1 LED to RED
+            setPlayerRGBColor(1, PLAYER1_RED);
             break;
         case 2:
-            setPlayerRGBColor(1, 2); // set player 1 LED to GREEN
+            setPlayerRGBColor(1, PLAYER1_GREEN);
             break;
         case 3:
-            setPlayerRGBColor(1, 3); // set player 1 LED to BLUE
+            setPlayerRGBColor(1, PLAYER1_BLUE);
             break;
         case 4:
-            setPlayerRGBColor(2, 1); // set player 2 LED to RED
+            setPlayerRGBColor(2, PLAYER2_RED);
             break;
         case 5:
-            setPlayerRGBColor(2, 2); // set player 2 LED to GREEN
+            setPlayerRGBColor(2, PLAYER2_GREEN);
             break;
         case 6:
-            setPlayerRGBColor(2, 3); // set player 2 LED to BLUE
+            setPlayerRGBColor(2, PLAYER2_BLUE);
             break;
         default:
-            turnOffPlayerRGB(1); // turn off player 1 LED
-            turnOffPlayerRGB(2); // turn off player 2 LED
+            turnOffPlayerRGB(1);
+            turnOffPlayerRGB(2);
             break;
     }
 }
