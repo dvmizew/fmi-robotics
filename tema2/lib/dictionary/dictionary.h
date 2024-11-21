@@ -63,7 +63,7 @@ const char str57[] PROGMEM = "te joci acasa";
 const char str58[] PROGMEM = "am spus castraveti";
 const char str59[] PROGMEM = "rong copilu";
 const char str60[] PROGMEM = "ce cablu foloseste conexiunea wireless?";
-const char str61[] PROGMEM = "nu sariti peste fire";
+const char str61[] PROGMEM = "am fost DJ in tinerete";
 const char str62[] PROGMEM = "ursuletul din erasmus";
 const char str63[] PROGMEM = "crestem in valoare";
 const char str64[] PROGMEM = "nu vreau sa vad elefanti";
@@ -140,6 +140,24 @@ const char str134[] PROGMEM = "nu lucrati in izometric";
 const char str135[] PROGMEM = "echipamentul specialistului denumit pompos SERVICE";
 const char str136[] PROGMEM = "aplicatia vorbeste cu tine";
 const char str137[] PROGMEM = "din saptamana 7, materialele vor disparea";
+const char str138[] PROGMEM = "stop joc";
+const char str139[] PROGMEM = "intra in atributiile voastre";
+const char str140[] PROGMEM = "topologia asta ar trebui sa fie gata in maxim 20 de minute";
+const char str141[] PROGMEM = "tot ce facem noi are insemnatate";
+const char str142[] PROGMEM = "crossover intre echipamente de acelasi nivel"; // citat din biblia draganului
+const char str143[] PROGMEM = "avem o integrala foarte grea";
+const char str144[] PROGMEM = "adunarea si scaderea sunt operatii complicate"; // add si subtract din autocad
+const char str145[] PROGMEM = "cabluri diferite, tensiuni diferite, echipamente distruse";
+const char str146[] PROGMEM = "am crescut pana acum si acum suntem in scadere";
+const char str147[] PROGMEM = "rautarul are un sistem de operare bazat pe linux, denumit ios";
+const char str148[] PROGMEM = "atac cibernetic";
+const char str149[] PROGMEM = "eu pot sa intru, sa sterg, am acces la resurse";
+const char str150[] PROGMEM = "pot sa descarc filme pe care nu le gasiti pe netflix"; // naughty dragan
+const char str151[] PROGMEM = "trebuia sa vii cu stick-ul data trecuta";
+const char str152[] PROGMEM = "intrebari, nelamuriri?";
+const char str153[] PROGMEM = "ia loc domnu student";
+const char str154[] PROGMEM = "sa va doara";
+const char str155[] PROGMEM = "copy paste-ul dauneaza grav notei finale";
 
 const char *const dictionary[] PROGMEM = {
     str0, str1, str2, str3, str4, str5, str6, str7,
@@ -159,7 +177,10 @@ const char *const dictionary[] PROGMEM = {
     str111, str112, str113, str114, str115, str116, str117,
     str118, str119, str120, str121, str122, str123, str124,
     str125, str126, str127, str128, str129, str130, str131,
-    str132, str133, str134, str135, str136, str137
+    str132, str133, str134, str135, str136, str137, str138,
+    str139, str140, str141, str142, str143, str144, str145,
+    str146, str147, str148, str149, str150, str151, str152,
+    str153, str154, str155
 };
 
 const uint8_t dictionaryLen = sizeof(dictionary) / sizeof(dictionary[0]);
